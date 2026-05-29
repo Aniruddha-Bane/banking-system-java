@@ -22,7 +22,7 @@ public class Main {
                     break;
 
                 case 3:
-                    account.checkBalance();
+                    System.out.println("Balance: " + account.getBalance());
                     break;
                 case 4:
                     showAccountDetails(account);
@@ -52,8 +52,8 @@ public class Main {
         System.out.print("Choose option: ");
     }
     public static void showAccountDetails(BankAccount account){
-        System.out.println("\nAccount Holder: " + account.accountHolder );
-        System.out.println("Account Number: " + account.accountNumber );
-        System.out.println("Balance: " + account.balance);
+        System.out.println("\nAccount Holder: " + account.getAccountHolder());
+        System.out.println("Account Number: " + account.getAccountNumber());
+        System.out.println("Balance: " + account.getBalance());
     }
 }
