@@ -1,79 +1,52 @@
 package com.bankapp.service;
 
 import com.bankapp.model.BankAccount;
+import com.bankapp.util.FileHandler;
 
 public class BankService {
 
-    // DEPOSIT
+    private FileHandler fileHandler = new FileHandler();
 
-    public void deposit(BankAccount account,
-                        double amount) {
+    public void deposit(BankAccount account, double amount) {
 
         if (amount <= 0) {
-
-            System.out.println(
-                    "Deposit amount must be positive."
-            );
-
+            System.out.println("Deposit must be positive.");
             return;
         }
 
-        double updatedBalance =
-                account.getBalance() + amount;
+        account.setBalance(account.getBalance() + amount);
 
-        account.setBalance(updatedBalance);
+        fileHandler.saveTransaction(
+                "DEPOSIT: " + amount +
+                        " | Balance: " + account.getBalance()
+        );
 
         System.out.println("Deposit successful.");
-
-        System.out.println(
-                "Updated balance: "
-                        + account.getBalance()
-        );
     }
 
-    // WITHDRAW
-
-    public void withdraw(BankAccount account,
-                         double amount) {
+    public void withdraw(BankAccount account, double amount) {
 
         if (amount <= 0) {
-
-            System.out.println(
-                    "Withdrawal amount must be positive."
-            );
-
+            System.out.println("Invalid amount.");
             return;
         }
 
         if (amount > account.getBalance()) {
-
-            System.out.println(
-                    "Insufficient balance."
-            );
-
+            System.out.println("Insufficient balance.");
             return;
         }
 
-        double updatedBalance =
-                account.getBalance() - amount;
+        account.setBalance(account.getBalance() - amount);
 
-        account.setBalance(updatedBalance);
+        fileHandler.saveTransaction(
+                "WITHDRAW: " + amount +
+                        " | Balance: " + account.getBalance()
+        );
 
         System.out.println("Withdrawal successful.");
-
-        System.out.println(
-                "Remaining balance: "
-                        + account.getBalance()
-        );
     }
 
-    // CHECK BALANCE
-
     public void checkBalance(BankAccount account) {
-
-        System.out.println(
-                "Current balance: "
-                        + account.getBalance()
-        );
+        System.out.println("Balance: " + account.getBalance());
     }
 }

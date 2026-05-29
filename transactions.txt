@@ -1,0 +1,4 @@
+DEPOSIT: 100.0 | Balance: 50100.0
+Deposited: 100.0 | Balance: 50100.0
+WITHDRAW: 5000.0 | Balance: 45100.0
+Withdrawn: 5000.0 | Balance: 45100.0
