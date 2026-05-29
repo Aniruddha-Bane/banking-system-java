@@ -65,5 +65,4 @@ src/com/bankapp/
 ---
 
 ## 👨‍💻 Author
-
-Built as part of Java backend learning journey.
+Aniruddha Bane
